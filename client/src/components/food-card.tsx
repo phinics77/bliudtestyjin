@@ -5,7 +5,7 @@ import { useState } from "react";
 import ShareModal from "./share-modal";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
-import { History, Utensils, Flame, RotateCcw, Share2, ArrowLeft } from "lucide-react";
+import { Utensils, Flame, RotateCcw, Share2, ArrowLeft } from "lucide-react";
 
 interface FoodCardProps {
   food: FoodItem;
@@ -98,14 +98,10 @@ export default function FoodCard({ food, onTryAgain }: FoodCardProps) {
             {food.description}
           </p>
           
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center mb-3">
             <div className="flex items-center">
               <Flame className="h-4 w-4 text-orange-500 mr-2" />
               <span className="text-sm text-gray-700">인기 메뉴</span>
-            </div>
-            <div className="flex items-center">
-              <History className="h-4 w-4 text-gray-400 mr-2" />
-              <span className="text-sm text-gray-700">조리 시간 25-40분</span>
             </div>
           </div>
         </div>
