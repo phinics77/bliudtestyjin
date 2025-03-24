@@ -41,17 +41,24 @@ export default function FoodCard({ food, onTryAgain }: FoodCardProps) {
     setIsShareModalOpen(false);
   };
 
-  const handleShareSuccess = (platform: string) => {
+  const handleShareSuccess = (platform: string, message?: string) => {
     const platformName = platform === 'copy' ? '클립보드' : 
                          platform === 'instagram' ? '인스타그램' :
                          platform === 'facebook' ? '페이스북' :
                          platform === 'twitter' ? '트위터' : platform;
+    
+    let description;
+    if (message) {
+      description = message;
+    } else {
+      description = platform === "copy" 
+        ? "링크가 클립보드에 복사되었습니다!" 
+        : `${platformName}에 공유되었습니다!`;
+    }
                          
     toast({
       title: "공유 완료",
-      description: platform === "copy" 
-        ? "링크가 클립보드에 복사되었습니다!" 
-        : `${platformName}에 공유되었습니다!`,
+      description: description,
       duration: 3000
     });
     setIsShareModalOpen(false);

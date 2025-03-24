@@ -17,7 +17,7 @@ interface ShareModalProps {
   isOpen: boolean;
   onClose: () => void;
   food: FoodItem;
-  onShareSuccess: (platform: string) => void;
+  onShareSuccess: (platform: string, message?: string) => void;
 }
 
 export default function ShareModal({ isOpen, onClose, food, onShareSuccess }: ShareModalProps) {
@@ -28,10 +28,14 @@ export default function ShareModal({ isOpen, onClose, food, onShareSuccess }: Sh
     try {
       const result = await shareRecommendation(platform, food.name, food.category);
       if (result.success) {
-        onShareSuccess(platform);
+        onShareSuccess(platform, result.message);
+      } else if (result.message) {
+        // 브라우저가 팝업을 차단했을 경우 등의 오류 메시지 처리
+        onShareSuccess(platform, result.message);
       }
     } catch (error) {
       console.error("공유 오류:", error);
+      onShareSuccess(platform, "공유 중 오류가 발생했습니다. 다시 시도해 주세요.");
     } finally {
       setIsSharing(false);
     }
@@ -65,6 +69,9 @@ export default function ShareModal({ isOpen, onClose, food, onShareSuccess }: Sh
       <DialogContent className="max-w-md sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="font-['Poppins'] text-lg font-semibold">음식 추천 공유하기</DialogTitle>
+          <DialogDescription>
+            원하는 소셜 미디어 플랫폼을 선택하여 추천 음식을 공유하세요
+          </DialogDescription>
           <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
             <X className="h-4 w-4" />
             <span className="sr-only">닫기</span>

@@ -13,7 +13,7 @@ export async function shareRecommendation(
   platform: string,
   foodName: string,
   category: string
-) {
+): Promise<{ success: boolean; message?: string }> {
   try {
     // 카테고리명 한국어로 변환
     const koreanCategory = 
@@ -51,7 +51,7 @@ export async function shareRecommendation(
           // 팝업이 차단되었을 경우
           return { success: false, message: '페이스북 공유 창이 차단되었습니다. 팝업 차단을 해제해주세요.' };
         }
-        return { success: true };
+        return { success: true, message: '페이스북 공유 창이 열렸습니다.' };
 
       case 'twitter':
         const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(currentUrl)}`;
@@ -60,7 +60,7 @@ export async function shareRecommendation(
           // 팝업이 차단되었을 경우
           return { success: false, message: '트위터 공유 창이 차단되었습니다. 팝업 차단을 해제해주세요.' };
         }
-        return { success: true };
+        return { success: true, message: '트위터 공유 창이 열렸습니다.' };
         
       case 'copy':
         try {
