@@ -24,7 +24,7 @@ export default function ShareModal({ isOpen, onClose, food, onShareSuccess }: Sh
         onShareSuccess(platform);
       }
     } catch (error) {
-      console.error("Error sharing:", error);
+      console.error("공유 오류:", error);
     } finally {
       setIsSharing(false);
     }
@@ -32,22 +32,22 @@ export default function ShareModal({ isOpen, onClose, food, onShareSuccess }: Sh
 
   const shareOptions = [
     { 
-      name: "Instagram", 
+      name: "인스타그램", 
       icon: <FaInstagram className="text-pink-600 text-xl" />,
       platform: "instagram"
     },
     { 
-      name: "Facebook", 
+      name: "페이스북", 
       icon: <FaFacebook className="text-blue-600 text-xl" />,
       platform: "facebook" 
     },
     { 
-      name: "Twitter", 
+      name: "트위터", 
       icon: <FaTwitter className="text-blue-400 text-xl" />,
       platform: "twitter" 
     },
     { 
-      name: "Copy Link", 
+      name: "링크 복사", 
       icon: <FaLink className="text-gray-600 text-xl" />,
       platform: "copy" 
     }
@@ -57,10 +57,10 @@ export default function ShareModal({ isOpen, onClose, food, onShareSuccess }: Sh
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-md sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="font-['Poppins'] text-lg font-semibold">Share this recommendation</DialogTitle>
+          <DialogTitle className="font-['Poppins'] text-lg font-semibold">음식 추천 공유하기</DialogTitle>
           <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
             <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
+            <span className="sr-only">닫기</span>
           </DialogClose>
         </DialogHeader>
         
@@ -86,7 +86,7 @@ export default function ShareModal({ isOpen, onClose, food, onShareSuccess }: Sh
             onClick={onClose} 
             className="w-full text-gray-600 hover:text-gray-800"
           >
-            Cancel
+            취소
           </Button>
         </div>
       </DialogContent>

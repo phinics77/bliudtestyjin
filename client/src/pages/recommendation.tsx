@@ -25,7 +25,7 @@ export default function Recommendation() {
     <>
       <header className="bg-primary text-white py-4 px-6 shadow-md">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-['Poppins'] font-bold">What to Eat Today?</h1>
+          <h1 className="text-2xl font-['Poppins'] font-bold">오늘 뭐 먹지?</h1>
           <button className="text-white p-2 rounded-full hover:bg-white hover:bg-opacity-20 transition">
             <Info className="h-5 w-5" />
           </button>
@@ -50,12 +50,12 @@ export default function Recommendation() {
           </div>
         ) : error ? (
           <div className="text-center py-10">
-            <p className="text-red-500 mb-4">Failed to load recommendation</p>
+            <p className="text-red-500 mb-4">추천 음식을 불러올 수 없습니다</p>
             <button 
               onClick={() => refetch()} 
               className="px-4 py-2 bg-primary text-white rounded-md"
             >
-              Try Again
+              다시 시도
             </button>
           </div>
         ) : food ? (
@@ -64,7 +64,7 @@ export default function Recommendation() {
       </div>
       
       <footer className="p-4 text-center text-gray-500 text-sm mt-auto">
-        <p>&copy; {new Date().getFullYear()} What to Eat Today? App</p>
+        <p>&copy; {new Date().getFullYear()} 오늘 뭐 먹지? 앱</p>
       </footer>
     </>
   );

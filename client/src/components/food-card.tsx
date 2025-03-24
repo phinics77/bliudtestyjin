@@ -12,6 +12,20 @@ interface FoodCardProps {
   onTryAgain: () => void;
 }
 
+// 카테고리명 한국어로 변환 함수
+const translateCategory = (category: string): string => {
+  switch(category) {
+    case 'korean':
+      return '한식';
+    case 'chinese':
+      return '중식';
+    case 'western':
+      return '양식';
+    default:
+      return category;
+  }
+};
+
 export default function FoodCard({ food, onTryAgain }: FoodCardProps) {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const { toast } = useToast();
@@ -26,11 +40,16 @@ export default function FoodCard({ food, onTryAgain }: FoodCardProps) {
   };
 
   const handleShareSuccess = (platform: string) => {
+    const platformName = platform === 'copy' ? '클립보드' : 
+                         platform === 'instagram' ? '인스타그램' :
+                         platform === 'facebook' ? '페이스북' :
+                         platform === 'twitter' ? '트위터' : platform;
+                         
     toast({
-      title: "Shared Successfully",
+      title: "공유 완료",
       description: platform === "copy" 
-        ? "Link copied to clipboard!" 
-        : `Shared on ${capitalize(platform)}!`,
+        ? "링크가 클립보드에 복사되었습니다!" 
+        : `${platformName}에 공유되었습니다!`,
       duration: 3000
     });
     setIsShareModalOpen(false);
@@ -49,7 +68,7 @@ export default function FoodCard({ food, onTryAgain }: FoodCardProps) {
           className="flex items-center text-gray-600 hover:text-primary transition"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          <span>Back to categories</span>
+          <span>카테고리로 돌아가기</span>
         </Button>
       </div>
       
@@ -61,7 +80,7 @@ export default function FoodCard({ food, onTryAgain }: FoodCardProps) {
             className="w-full h-64 object-cover"
           />
           <div className="absolute top-4 right-4 bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
-            <span>{capitalize(food.category)}</span>
+            <span>{translateCategory(food.category)}</span>
           </div>
         </div>
         
@@ -80,11 +99,11 @@ export default function FoodCard({ food, onTryAgain }: FoodCardProps) {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center">
               <Flame className="h-4 w-4 text-orange-500 mr-2" />
-              <span className="text-sm text-gray-700">Popular choice</span>
+              <span className="text-sm text-gray-700">인기 메뉴</span>
             </div>
             <div className="flex items-center">
               <History className="h-4 w-4 text-gray-400 mr-2" />
-              <span className="text-sm text-gray-700">25-40 mins</span>
+              <span className="text-sm text-gray-700">조리 시간 25-40분</span>
             </div>
           </div>
         </div>
@@ -97,7 +116,7 @@ export default function FoodCard({ food, onTryAgain }: FoodCardProps) {
           className="w-full py-6 border-[#4ECDC4] text-[#4ECDC4] hover:bg-[#4ECDC4] hover:text-white"
         >
           <RotateCcw className="mr-2 h-4 w-4" />
-          <span>Try Again</span>
+          <span>다시 추천받기</span>
         </Button>
         
         <Button 
@@ -105,7 +124,7 @@ export default function FoodCard({ food, onTryAgain }: FoodCardProps) {
           className="w-full py-6 bg-[#4ECDC4] hover:bg-opacity-90"
         >
           <Share2 className="mr-2 h-4 w-4" />
-          <span>Share</span>
+          <span>공유하기</span>
         </Button>
       </div>
 

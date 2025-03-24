@@ -14,14 +14,19 @@ export async function shareRecommendation(
   foodName: string,
   category: string
 ) {
-  const shareText = `Check out my food recommendation: ${foodName} - a delicious ${category} dish! #WhatToEatToday`;
+  // 카테고리명 한국어로 변환
+  const koreanCategory = category === 'korean' ? '한식' : 
+                         category === 'chinese' ? '중식' : 
+                         category === 'western' ? '양식' : category;
+  
+  const shareText = `오늘의 음식 추천: ${foodName} - 맛있는 ${koreanCategory} 요리! #오늘뭐먹지`;
   
   switch (platform) {
     case 'instagram':
-      // Instagram doesn't support direct web sharing links
-      // Copy text to clipboard for manual sharing
+      // 인스타그램은 직접적인 웹 공유 링크를 지원하지 않음
+      // 클립보드에 텍스트 복사하여 수동 공유
       await navigator.clipboard.writeText(shareText);
-      return { success: true, message: 'Text copied to clipboard for sharing on Instagram' };
+      return { success: true, message: '인스타그램에 공유할 텍스트가 클립보드에 복사되었습니다' };
     
     case 'facebook':
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}&quote=${encodeURIComponent(shareText)}`, '_blank');
@@ -33,9 +38,9 @@ export async function shareRecommendation(
       
     case 'copy':
       await navigator.clipboard.writeText(shareText);
-      return { success: true, message: 'Link copied to clipboard!' };
+      return { success: true, message: '링크가 클립보드에 복사되었습니다!' };
       
     default:
-      return { success: false, message: 'Unsupported sharing platform' };
+      return { success: false, message: '지원되지 않는 공유 플랫폼입니다' };
   }
 }
