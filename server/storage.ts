@@ -132,6 +132,42 @@ export class MemStorage implements IStorage {
         description: "천천히 끓여 크리미한 식감을 갖는 이탈리안 쌀 요리로 다양한 재료와 함께 즐깁니다.", 
         category: "western",
         image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+      },
+      { 
+        name: "스시", 
+        description: "신선한 생선이나 해산물을 얹은 초밥으로 와사비와 간장과 함께 즐기는 일본 요리입니다.", 
+        category: "japanese",
+        image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+      },
+      { 
+        name: "라멘", 
+        description: "진한 육수와 쫄깃한 면, 다양한 토핑으로 구성된 일본의 대표적인 면 요리입니다.", 
+        category: "japanese",
+        image: "https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+      },
+      { 
+        name: "돈카츠", 
+        description: "두툼한 돼지고기를 빵가루로 입혀 바삭하게 튀긴 일본식 돈가스입니다.", 
+        category: "japanese",
+        image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+      },
+      { 
+        name: "오코노미야키", 
+        description: "밀가루 반죽에 다양한 재료를 섞어 구운 일본식 부침개로 특제 소스를 뿌려 먹습니다.", 
+        category: "japanese",
+        image: "https://images.unsplash.com/photo-1565434331014-dc88c6e0c9d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+      },
+      { 
+        name: "우동", 
+        description: "두꺼운 밀가루 면을 담백한 국물에 담아 먹는 일본의 대표적인 면 요리입니다.", 
+        category: "japanese",
+        image: "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+      },
+      { 
+        name: "규동", 
+        description: "달콤짭짤한 간장 양념에 조린 소고기를 밥 위에 올린 일본식 덮밥 요리입니다.", 
+        category: "japanese",
+        image: "https://images.unsplash.com/photo-1628294895950-9805252327bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
       }
     ];
 

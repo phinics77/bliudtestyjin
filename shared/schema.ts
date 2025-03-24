@@ -34,5 +34,5 @@ export type User = typeof users.$inferSelect;
 export type InsertFoodItem = z.infer<typeof insertFoodItemSchema>;
 export type FoodItem = typeof foodItems.$inferSelect;
 
-export const foodCategories = ["korean", "chinese", "western"] as const;
+export const foodCategories = ["korean", "chinese", "western", "japanese"] as const;
 export type FoodCategory = typeof foodCategories[number];

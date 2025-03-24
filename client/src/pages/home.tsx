@@ -15,6 +15,10 @@ export default function Home() {
     western: {
       desc: "버거, 파스타, 스테이크 등",
       image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    },
+    japanese: {
+      desc: "스시, 라멘, 돈카츠 등",
+      image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
     }
   };
 

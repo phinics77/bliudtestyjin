@@ -17,8 +17,10 @@ const getCategoryName = (category: FoodCategory): string => {
       return '중식';
     case 'western':
       return '양식';
+    case 'japanese':
+      return '일식';
     default:
-      return category;
+      return '알 수 없음';
   }
 };
 
